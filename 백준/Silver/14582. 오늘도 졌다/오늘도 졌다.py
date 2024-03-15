@@ -1,25 +1,10 @@
-import sys
-input = sys.stdin.readline
 one = list(map(int, input().split()))
 two = list(map(int, input().split()))
-one_count, two_count = 0, 0
-is_win = 0
-
-for i in range(9):
-    one_count += one[i]
-
-    if one_count > two_count:
-        is_win = True
-
-    two_count += two[i]
-
-    if one_count > two_count:
-        is_win = True
-
-if one_count < two_count:
-    if is_win:
-        print("Yes")
-    else:
-        print("No")
-else:
-    print("No")
+o_score, t_score = 0, 0
+flag = False
+for o,t in zip(one, two):
+    o_score += o
+    if o_score > t_score:
+        flag = True
+    t_score += t
+print("Yes" if o_score < t_score and flag else "No")
