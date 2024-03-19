@@ -1,0 +1,5 @@
+data = input()
+a = data.count("U") + data.count("C")
+b = data.count("P") + data.count("D")
+if (b + 1) // 2 < a: print("U", end="")
+if b:print("DP")
