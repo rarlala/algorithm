@@ -1,13 +1,9 @@
 def solution(n):
-    answer = 0
-    num = n + 1
+    num = n
     c2 = format(n, 'b').count('1')
     
-    while answer == 0:
+    while True:
+        num += 1
         c = format(num, 'b').count('1')
         if c == c2:
-            answer = num
-        else:
-            num += 1
-            
-    return answer
+            return num
