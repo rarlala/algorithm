@@ -6,10 +6,8 @@ def solution(people, limit):
     
     while left <= right:
         if people[left] + people[right] <= limit:
-            left += 1
             right -= 1
-        else:
-            left += 1
+        left += 1
         c += 1
     
     return c
