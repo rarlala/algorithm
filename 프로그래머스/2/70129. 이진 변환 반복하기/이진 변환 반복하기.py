@@ -1,11 +1,10 @@
 def solution(s):
-    zero = 0
+    zero_count = 0
     count = 0
     
     while s != '1':
-        arr = list(s)
-        zero += arr.count('0')
+        zero_count += list(s).count('0')
         s = format((len("".join(s.split("0")))),  'b')
         count += 1
         
-    return [count, zero]
+    return [count, zero_count]
