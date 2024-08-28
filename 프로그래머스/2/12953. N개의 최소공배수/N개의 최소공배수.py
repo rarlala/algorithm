@@ -11,8 +11,7 @@ def solution(arr):
             if num % i != 0:
                 idx += 1
                 break
-            else:
-                count += 1
+            count += 1
         
         if count == len(arr):
             return num
