@@ -1,19 +1,11 @@
 def solution(n, words):
     result = 0
-    answers = []
+    answers = [words[0]]
     
-    for idx in range(0, len(words)):
-        turn = (idx // n) + 1
-        if words[idx] in answers:
+    for idx in range(1, len(words)):
+        if words[idx] in answers or (words[idx - 1][-1] != words[idx][0]):
             result = idx
             break 
-        elif idx != 0 and words[idx - 1][-1] != words[idx][0]:
-            result = idx
-            break
-        else:
-            answers.append(words[idx])
-        
-    if result == 0:
-        return [0,0]
-    else:
-        return [(idx % n) + 1,(idx // n) + 1]
+        answers.append(words[idx])
+
+    return [0,0] if result == 0 else [(idx % n) + 1,(idx // n) + 1]
