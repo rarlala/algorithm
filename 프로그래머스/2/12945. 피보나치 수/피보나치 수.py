@@ -1,5 +1,5 @@
 def solution(n):
-    answer = 0
+    answer = None
     x, y = 0, 1
     
     for i in range(2, n + 1):
