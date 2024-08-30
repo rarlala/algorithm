@@ -1,21 +1,19 @@
 from collections import Counter
+from itertools import islice
 
-def isSame(x, y):
+def isCounterEqual(x, y):
     y_counter = Counter(y)
-    for a in x:
-        if x[a] != y_counter[a]:
-            return False
-    return True
+    return all(x[a] == y_counter[a] for a in x)
 
 def solution(want, number, discount):
     answer = 0
     dict = {}
     for w, n in zip(want, number):
         dict[w] = n
+        
+    ten_days = zip(*(islice(discount, i, None) for i in range(10)))
     
-    for idx in range(0, len(discount) - 9):
-        ten_day = discount[idx: idx + 10]
-        if isSame(dict, ten_day):
-            answer += 1
+    for ten_day in ten_days:
+        answer += 1 if isCounterEqual(dict, ten_day) else 0
     
     return answer
