@@ -1,5 +1,5 @@
 def solution(word):
-    string = "_AEIOU"
+    string = "AEIOU"
     current_word = ["A"]
     count = 1
     
@@ -11,7 +11,7 @@ def solution(word):
             continue
 
         for i in range(len(current_word) - 1, -1, -1):
-            if string.index(current_word[i]) < 5:
+            if string.index(current_word[i]) < 4:
                 current_word[i] = string[string.index(current_word[i]) + 1]
                 break
             current_word.pop()
