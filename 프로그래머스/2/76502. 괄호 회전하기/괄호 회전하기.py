@@ -1,19 +1,21 @@
 def solution(s):
     answer = 0
+    arr = ['(', ')', "[", "]", "{", "}"]
     
     for _ in s:
         check = True
         stack = []
         for b in s:
-            if b == '(' or b == '[' or b == '{':
+            if arr.index(b) % 2 == 0:
                 stack.append(b)
             else:
-                if len(stack) == 0 or (stack[-1] == '(' and b != ')') or (stack[-1] == '[' and b != ']') or (stack[-1] == '{' and b != '}'):
+                if not stack or b != arr[arr.index(stack[-1]) + 1]:
                     check = False
-                    break    
+                    break
                 stack.pop()
         
-        answer += 1 if check and len(stack) == 0 else 0
+        if check and not stack:
+            answer += 1
         s = s[1:] + s[0]
         
     return answer
