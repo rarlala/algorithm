@@ -1,15 +1,15 @@
 def solution(s):
     answer = 0
-    arr = ['(', ')', "[", "]", "{", "}"]
+    dict = {'(': ')', "[": "]", "{": "}"}
     
     for _ in s:
         check = True
         stack = []
         for b in s:
-            if arr.index(b) % 2 == 0:
+            if b in dict:
                 stack.append(b)
             else:
-                if not stack or b != arr[arr.index(stack[-1]) + 1]:
+                if not stack or b != dict[stack[-1]]:
                     check = False
                     break
                 stack.pop()
@@ -19,4 +19,3 @@ def solution(s):
         s = s[1:] + s[0]
         
     return answer
-                
