@@ -8,14 +8,14 @@ def solution(s):
             value = ''
             continue
         if n == "}":
-            arr.append(value.split(','))
+            arr.append(list(map(int,value.split(','))))
             continue
         value += n
     
     arr.sort(key=len)
     for i in arr:
         for j in i:
-            if int(j) not in answer:
-                answer.append(int(j))
+            if j not in answer:
+                answer.append(j)
     
     return answer
