@@ -7,18 +7,9 @@ def solution(citations):
     
     while left <= right:
         mid = (left + right) // 2
-        
-        a = 0
-        b = len(citations)
-        while a < b:
-            idx = (a + b) // 2
-            
-            if citations[idx] >= mid:
-                b = idx
-            else:
-                a = idx + 1
-            
-        count = len(citations) - a
+
+        idx = bisect_left(citations, mid)
+        count = len(citations) - idx
             
         if count >= mid:
             left += 1
