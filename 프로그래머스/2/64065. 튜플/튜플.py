@@ -1,20 +1,20 @@
 def solution(s):
     answer = []
     
-    datas = []
-    num = ''
+    arr = []
+    value = ''
     for n in s:
         if n == "{":
-            num = ''
-            arr = []
+            value = ''
             continue
         if n == "}":
-            datas.append(num)
+            arr.append(value.split(','))
             continue
-        num += n
-        
-    for i in sorted(datas, key=lambda x:len(x)):
-        for j in i.split(','):
+        value += n
+    
+    arr.sort(key=len)
+    for i in arr:
+        for j in i:
             if int(j) not in answer:
                 answer.append(int(j))
     
