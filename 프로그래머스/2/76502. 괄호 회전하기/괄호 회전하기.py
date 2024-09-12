@@ -1,21 +1,19 @@
 def solution(s):
     answer = 0
-    dict = {'(': ')', "[": "]", "{": "}"}
+    pair = {'(': ')', "[": "]", "{": "}"}
     
     for _ in s:
-        check = True
         stack = []
         for b in s:
-            if b in dict:
+            if b in pair:
                 stack.append(b)
             else:
-                if not stack or b != dict[stack[-1]]:
-                    check = False
+                if not stack or b != pair[stack[-1]]:
                     break
                 stack.pop()
-        
-        if check and not stack:
-            answer += 1
+        else:
+            if not stack: 
+                answer += 1
         s = s[1:] + s[0]
         
     return answer
