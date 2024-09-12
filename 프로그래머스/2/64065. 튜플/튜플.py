@@ -8,10 +8,11 @@ def solution(s):
             value = ''
             continue
         if n == "}":
-            arr.append(list(map(int,value.split(','))))
+            arr.append(value)
             continue
         value += n
     
+    arr = [list(map(int,a.split(','))) for a in arr]
     arr.sort(key=len)
     for i in arr:
         for j in i:
