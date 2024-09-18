@@ -24,6 +24,4 @@ def solution(str1, str2):
     intersection = sum((counter1 & counter2).values())
     union = sum((counter1 | counter2).values())
     
-    if union > 0:
-        return int((intersection / union) * 65536)
-    return 65536
+    return int((intersection / union) * 65536) if union > 0 else 65536
