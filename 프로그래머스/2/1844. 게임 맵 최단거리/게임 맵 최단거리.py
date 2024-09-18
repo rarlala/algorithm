@@ -17,9 +17,9 @@ def solution(maps):
         if r == (n - 1) and c == (m - 1):
             return v
 
-        for d in ds:
-            nx = r + d[0]
-            ny = c + d[1]
+        for (x, y) in ds:
+            nx = r + x
+            ny = c + y
             
             if 0 <= nx < n and 0 <= ny < m and (nx, ny) not in visited and maps[nx][ny] == 1:
                 q.append((nx, ny, v + 1))
