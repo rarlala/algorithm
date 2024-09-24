@@ -7,5 +7,6 @@ def solution(word):
         remaining_positions = 4 - i
         for j in range(remaining_positions, -1, -1):
             temp += 5 ** j
+        print(temp)
         answer += temp * (dict[word[i]] - 1)
     return answer
