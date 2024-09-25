@@ -1,25 +1,21 @@
-
 def solution(s, n):
     ALPHABET_NUMBER = 26
     answer = ''
+    
+    def isOutOfRange(v, max_value):
+        if (ord(v) + n > ord(max_value)):
+            return True
+        return False
     
     for (i, v) in enumerate(s):
         if v == ' ':
             answer += v
             continue
+        
+        if isOutOfRange(v, 'z' if v.islower() else "Z"):
+            answer += chr(ord(v) + n - ALPHABET_NUMBER)
+            continue
             
-        # 소문자
-        if ord('a') <= ord(v) <= ord('z'):
-            if (ord(v) + n) > ord('z') :
-                answer += chr(ord(v) + n - ALPHABET_NUMBER)
-                continue
-            
-        # 대문자
-        if ord('A') <= ord(v) <= ord('Z'):
-            if (ord(v) + n) > ord('Z'):
-                answer += chr(ord(v) + n - ALPHABET_NUMBER)
-                continue
-
         answer += chr(ord(v) + n)
 
     return answer
