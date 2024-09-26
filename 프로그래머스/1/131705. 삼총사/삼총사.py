@@ -1,14 +1,15 @@
-def solution(numbers):
-    return [sum(i) for i in combinations(3, numbers)].count(0)
+def solution(number):
 
-def combinations(count, numbers):
-    if count == 0:
-        return [[]]
-
-    if not numbers:
-        return []
-
-    when_first_selected = [[numbers[0]] + x for x in combinations(count - 1, numbers[1:])]
-    when_first_not_selected = combinations(count, numbers[1:])
-
-    return when_first_selected + when_first_not_selected
+    def find_sum_zero(selected_count, current_sum, start_index):
+        if selected_count == 3:
+            if current_sum == 0:
+                return 1
+            return 0
+        
+        if start_index == len(number):
+            return 0
+            
+        return (find_sum_zero(selected_count + 1, current_sum + number[start_index], start_index + 1) + find_sum_zero(selected_count, current_sum, start_index + 1))
+    
+    return find_sum_zero(0, 0, 0)
+    
