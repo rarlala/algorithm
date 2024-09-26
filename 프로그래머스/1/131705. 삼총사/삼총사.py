@@ -1,15 +1,16 @@
-def solution(number):
+def solution(numbers):
+    return [sum(i) for i in list(combinations_generator(3, numbers))].count(0)
 
-    def find_sum_zero(selected_count, current_sum, start_index):
-        if selected_count == 3:
-            if current_sum == 0:
-                return 1
-            return 0
+def combinations_generator(count, numbers):
+    if count == 0:
+        yield []
+        return
+    
+    if not numbers:
+        return
+    
+    for x in combinations_generator(count - 1, numbers[1:]):
+        yield [numbers[0]] + x
         
-        if start_index == len(number):
-            return 0
-            
-        return (find_sum_zero(selected_count + 1, current_sum + number[start_index], start_index + 1) + find_sum_zero(selected_count, current_sum, start_index + 1))
-    
-    return find_sum_zero(0, 0, 0)
-    
+    for x in combinations_generator(count, numbers[1:]):
+        yield x
