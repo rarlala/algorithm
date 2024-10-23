@@ -1,9 +1,11 @@
 def solution(a, b, n):
     answer = 0
-    
-    while (n >= a):
-        change = n // a * b
-        n = change + (n % a)
-        answer += change
+
+    while (n > 0):
+        new_bottles, mod = divmod(n, a)
+        if new_bottles == 0:
+            break
+        answer += new_bottles * b
+        n = new_bottles * b + mod
         
     return answer
