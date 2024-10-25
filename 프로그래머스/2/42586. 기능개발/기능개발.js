@@ -7,20 +7,16 @@ function solution(progresses, speeds) {
     let prevTime = days.shift()
     let count = 1
     
-    while(days.length) {
-        let currentTime = days.shift()
-        if (prevTime >= currentTime) {
+    days.forEach(d => {
+        if (prevTime >= d) {
             count += 1
         } else {
             results.push(count)
-            prevTime = currentTime
+            prevTime = d
             count = 1
         }
-        
-        if (days.length === 0) {
-            results.push(count)
-        }
-    }
+    })
     
+    results.push(count)
     return results
 }
